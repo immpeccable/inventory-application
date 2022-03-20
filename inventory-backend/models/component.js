@@ -8,8 +8,8 @@ let ComponentSchema = new Schema({
 
     component_name: {type: String, required: true},
     description: {type: String, required: true},
-    price: {type: Double, required:true},
-    stock: {type: Int32, required:true},
+    price: {type: String, required:true},
+    stock: {type: String, required:true},
     category: {type: Schema.Types.ObjectId, ref: 'Category', required: true}
 })
 

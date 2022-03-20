@@ -4,12 +4,7 @@ console.log('This script populates some test books, authors, genres and bookinst
 
 // Get arguments passed on command line
 var userArgs = process.argv.slice(2);
-/*
-if (!userArgs[0].startsWith('mongodb')) {
-    console.log('ERROR: You need to specify a valid mongodb URL as the first argument');
-    return
-}
-*/
+
 var async = require('async')
 var Category = require('./models/category')
 var Component = require('./models/component')
@@ -39,7 +34,7 @@ function categoryCreate(category_name, description, cb) {
     console.log('New Category: ' + category);
     categories.push(category)
 
-    cb(null, author)
+    cb(null, category)
   }  );
 }
 
@@ -47,7 +42,7 @@ function componentCreate(name, description,price, stock, category , cb) {
   let component_detail = {component_name: name, description: description, price: price, stock: stock, category: category};
 
   let component = new Component(component_detail);
-  genre.save(function (err) {
+  component.save(function (err) {
     if (err) {
       cb(err, null);
       return;
@@ -77,19 +72,19 @@ function createCategories(cb) {
 function createItems(cb) {
     async.series([
         function(callback) {
-          componentCreate('item_name_1', 'item_description_1', 100, 100, categories[0],  callback);
+          componentCreate('item_name_1', 'item_description_1', "100", "100", categories[0],  callback);
         },
         function(callback) {
-            componentCreate('item_name_2', 'item_description_2', 200, 200, categories[1],  callback);
+            componentCreate('item_name_2', 'item_description_2', "200", "200", categories[1],  callback);
         },
         function(callback) {
-            componentCreate('item_name_3', 'item_description_3', 300, 300, categories[1],  callback);
+            componentCreate('item_name_3', 'item_description_3', "300", "300", categories[1],  callback);
         },
         function(callback) {
-            componentCreate('item_name_4', 'item_description_4', 400, 400, categories[2],  callback);
+            componentCreate('item_name_4', 'item_description_4', "400", "400", categories[2],  callback);
         },
         function(callback) {
-            componentCreate('item_name_5', 'item_description_5', 500, 500, categories[2],  callback);
+            componentCreate('item_name_5', 'item_description_5', "500", "500", categories[2],  callback);
         }
         ],
         // optional callback
