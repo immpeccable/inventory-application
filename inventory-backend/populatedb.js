@@ -18,11 +18,11 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-var categories = []
-var components = []
+var categoriessss = []
+var componentssss = []
 
 function categoryCreate(category_name, description, cb) {
-  let category_detail = {category_name:category_name , description: description }
+  category_detail = {category_name:category_name , description: description }
   
   var category = new Category(category_detail);
        
@@ -32,14 +32,14 @@ function categoryCreate(category_name, description, cb) {
       return
     }
     console.log('New Category: ' + category);
-    categories.push(category)
+    categoriessss.push(category)
 
     cb(null, category)
   }  );
 }
 
 function componentCreate(name, description,price, stock, category , cb) {
-  let component_detail = {component_name: name, description: description, price: price, stock: stock, category: category};
+  component_detail = {component_name: name, description: description, price: price, stock: stock, category: category};
 
   let component = new Component(component_detail);
   component.save(function (err) {
@@ -48,7 +48,7 @@ function componentCreate(name, description,price, stock, category , cb) {
       return;
     }
     console.log('New Component: ' + component);
-    components.push(component);
+    componentssss.push(component);
     cb(null, component);
   }   );
 }
@@ -72,19 +72,19 @@ function createCategories(cb) {
 function createItems(cb) {
     async.series([
         function(callback) {
-          componentCreate('item_name_1', 'item_description_1', "100", "100", categories[0],  callback);
+          componentCreate('item_name_1', 'item_description_1', "100", "100", categoriessss[0],  callback);
         },
         function(callback) {
-            componentCreate('item_name_2', 'item_description_2', "200", "200", categories[1],  callback);
+            componentCreate('item_name_2', 'item_description_2', "200", "200", categoriessss[1],  callback);
         },
         function(callback) {
-            componentCreate('item_name_3', 'item_description_3', "300", "300", categories[1],  callback);
+            componentCreate('item_name_3', 'item_description_3', "300", "300", categoriessss[1],  callback);
         },
         function(callback) {
-            componentCreate('item_name_4', 'item_description_4', "400", "400", categories[2],  callback);
+            componentCreate('item_name_4', 'item_description_4', "400", "400", categoriessss[2],  callback);
         },
         function(callback) {
-            componentCreate('item_name_5', 'item_description_5', "500", "500", categories[2],  callback);
+            componentCreate('item_name_5', 'item_description_5', "500", "500", categoriessss[2],  callback);
         }
         ],
         // optional callback
@@ -103,12 +103,14 @@ function(err, results) {
         console.log('FINAL ERR: '+err);
     }
     else {
-        console.log('items: '+components);
+        console.log('items: '+componentssss);
         
     }
     // All done, disconnect from database
     mongoose.connection.close();
+    
 });
+
 
 
 
