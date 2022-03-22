@@ -1,27 +1,24 @@
-import { useState } from 'react';
-import './App.css';
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Header from './components/header'
+import Footer from './components/footer';
+import Main from './components/mainpage';
 
 
 function App() {
 
 
-  const [apiresponse, setapiResponse] = useState("");
   
-  async function fetchApi(){
-
-    let response = await fetch("http://localhost:3000/list/category");
-    console.log(response);
-
-
-  }
-  
-  fetchApi();
   return (
     
     <div>
-      hello world 
+      <Header></Header>
+      <Main></Main>
+      <Footer></Footer>
+      
     </div>
+    
+    
   );
 }
 
