@@ -20,6 +20,7 @@ exports.category_detail = function (req, res, next) {
     async.parallel({
 
         category: function (callback) {
+            console.log(req.params.id)
             Category.findById(req.params.id).exec(callback);
         },
         components: function (callback) {
@@ -34,6 +35,7 @@ exports.category_detail = function (req, res, next) {
                 return next(nerr);
             } else {
                 console.log("no error");
+                console.log(results);
                 res.send(results);
             }
         })

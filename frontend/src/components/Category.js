@@ -16,7 +16,7 @@ function Category(props) {
         <div className='description'>
             {description}
         </div>
-        <Link to = {"list/category/"+ category_id}>
+        <Link to = {"category/"+ category_id}>
             <button className='choose-button'>
                 Choose Item
             </button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import '../App.css'
 import Main from './mainpage';
@@ -12,16 +12,18 @@ import {
   Routes
 } from "react-router-dom";
 
-export default function RouteController() {
+export class RouteController extends Component {
 
-  return <BrowserRouter>
+  render() {
+    return <BrowserRouter>
 
-    <Routes>
-      <Route exact path="/" element = {<Navigate to="/list" />}></Route>
-      <Route exact path="/list" element={<Main></Main>}> </Route>
-      <Route exact path = "/list/category/:id" element = {<DisplayItems></DisplayItems>}></Route>
-    </Routes>
-  </BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Navigate to="/list" />}></Route>
+        <Route exact path="/list" element={<Main></Main>}> </Route>
+        <Route exact path="/list/category/:id" element={<DisplayItems location = {this.props}></DisplayItems>} ></Route>
+      </Routes>
+    </BrowserRouter>
+  }
 
 }
 

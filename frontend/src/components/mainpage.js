@@ -9,17 +9,23 @@ import DisplayItems from './itemsPage'
 let Main = () => {
 
     let [component, setComponent] = useState([])
-    let [page, setPage] = useState("Main");
 
     useEffect(() => {
+
+        let isSubscribed = true;
+        fetchComponent();
 
         fetchComponent();
         async function fetchComponent() {
             let response = await fetch("http://localhost:3000/list/category");
             response = await response.json();
-            setComponent(response);
+            if(isSubscribed){
+                setComponent(response);
+            }
         }
-        //return {setComponent([])}
+        return () => {
+            isSubscribed = false;
+        }
     }, [component])
 
     function componentWrite() {
