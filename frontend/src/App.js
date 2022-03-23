@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Header from './components/header'
 import Footer from './components/footer';
 import Main from './components/mainpage';
+import RouteController from './components/RouterControl';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     
     <div>
       <Header></Header>
-      <Main></Main>
+      <RouteController></RouteController>
       <Footer></Footer>
       
     </div>

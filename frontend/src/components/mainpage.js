@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import '../App.css'
 import { useState } from 'react';
-import Item from './component'
+import Category from './Category'
+import DisplayItems from './itemsPage'
 
 
 let Main = () => {
@@ -11,25 +12,25 @@ let Main = () => {
     let [page, setPage] = useState("Main");
 
     useEffect(() => {
-        
+
         fetchComponent();
         async function fetchComponent() {
             let response = await fetch("http://localhost:3000/list/category");
             response = await response.json();
             setComponent(response);
         }
+        //return {setComponent([])}
     }, [component])
 
-    function componentWrite(){
-        console.log(component);
+    function componentWrite() {
+        //console.log(component);
         return component.map((el) => {
-            return <Item category_name = {el.category_name} description = {el.description} ></Item>
+            return <Category category_name={el.category_name} description={el.description} category_id = {el._id} ></Category>
         })
     }
-    
 
-    if(page === "Main"){
-        return <div className='main'>
+
+    return <div className='main'>
         <div className='item first'>
             <div className='category-name'>
                 Category Name
@@ -37,20 +38,12 @@ let Main = () => {
             <div className='description'>
                 Description
             </div>
-            <div >
+            <div>
                 Choose Item
             </div>
         </div>
         {componentWrite()}
     </div>
-    }else{
-
-        return <pageItem></pageItem>
-
-    }
-
-
-
 }
 
 export default Main
