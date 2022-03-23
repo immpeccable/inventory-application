@@ -29,13 +29,17 @@ body{
   align-items: center;
 }
 .item.first{
+  width: 70vw;
   height: 5vh;
 }
 .category-name{
-  width: 22vw;
+  width: 30%;
 }
 .description{
-  width: 21vw;
+  width: 30%;
+}
+.choose-item-text{
+  width: 40%;
 }
 .category-delete-button{
   width: 7vw;
@@ -98,7 +102,7 @@ body{
 }
 
 .component-name, .component-description{
-  width: 25%;
+  width: 16%;
 }
 .component-price, .component-stock{
   width: 15%;
@@ -149,7 +153,6 @@ form{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   margin: 5rem;
   gap: 50px;
 }

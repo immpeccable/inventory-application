@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import '../App.css'
 import { useState } from 'react';
 import Category from './Category'
-import DisplayItems from './itemsPage'
 import {Link} from "react-router-dom"
 
 
@@ -46,7 +44,7 @@ let Main = () => {
                 <div className='description'>
                     Description
                 </div>
-                <div>
+                <div className='choose-item-text'>
                     Choose Item
                 </div>
                 
@@ -55,6 +53,11 @@ let Main = () => {
             <Link replace to= "category/create/add">
                 <button className='add-category'>
                     Add Category
+                </button>
+            </Link>
+            <Link replace to= "component/create">
+                <button className='add-category'>
+                    Add Item
                 </button>
             </Link>
 

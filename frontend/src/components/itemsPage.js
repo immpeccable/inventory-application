@@ -2,25 +2,25 @@ import { render } from '@testing-library/react';
 import React, { Component, useEffect } from "react";
 import '../App.css'
 import { useState, useRef } from 'react';
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function DisplayItems(props) {
 
 
 
-    function getCategoryId(curUrl){
+    function getCategoryId(curUrl) {
 
         let index = 0;
         let res = "";
-        for(let i = 0; i<curUrl.length; i++){
-            if(curUrl[i] === "/"){
+        for (let i = 0; i < curUrl.length; i++) {
+            if (curUrl[i] === "/") {
                 index = i;
             }
         }
-        
-        for(let i = index + 1; i < curUrl.length; i++){
-            res+=curUrl[i];
+
+        for (let i = index + 1; i < curUrl.length; i++) {
+            res += curUrl[i];
         }
         return res;
 
@@ -30,7 +30,7 @@ function DisplayItems(props) {
     let category_id = getCategoryId(curUrl);
 
     const [categoryInfo, setCategoryInfo] = useState({});
-    
+
     useEffect(() => {
 
         let isSubscribed = true;
@@ -40,7 +40,7 @@ function DisplayItems(props) {
         async function fetchCategoryInfo() {
             let response = await fetch("http://localhost:3000/list/category/" + category_id);
             response = await response.json();
-            if(isSubscribed){
+            if (isSubscribed) {
                 setCategoryInfo(response)
             }
         }
@@ -48,13 +48,13 @@ function DisplayItems(props) {
         return () => {
             isSubscribed = false;
         }
-        
+
 
     }, [categoryInfo])
 
-    function renderCorrespondingItems(){
+    function renderCorrespondingItems() {
         console.log(categoryInfo.components)
-        if(!categoryInfo.category) return;
+        if (!categoryInfo.category) return;
         return categoryInfo.components.map((el) => {
 
             return <div className='item'>
@@ -65,7 +65,10 @@ function DisplayItems(props) {
                 <div className='component-price'> {el.price} </div>
                 <div className='component-stock'> {el.stock} </div>
                 <div className='component-category'> {categoryInfo.category.category_name} </div>
-                
+                <form>
+                    <input className='category-delete-button' type="submit" value="Delete" formMethod='POST' formAction={'http://localhost:3000/list/components/' + el._id + "/delete"} ></input>
+                </form>
+
             </div>
 
         })
@@ -93,7 +96,7 @@ function DisplayItems(props) {
         </div>
         {renderCorrespondingItems()}
 
-        <Link replace to = "/list">
+        <Link replace to="/list">
             <button className='go-back'>Return</button>
         </Link>
     </div>
