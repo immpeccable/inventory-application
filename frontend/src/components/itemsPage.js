@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import React, { Component, useEffect } from "react";
 import '../App.css'
 import { useState, useRef } from 'react';
-import { useSearchParams } from "react-router-dom";
+import {Link } from "react-router-dom";
 
 
 function DisplayItems(props) {
@@ -52,8 +52,6 @@ function DisplayItems(props) {
 
     }, [categoryInfo])
 
-    //console.log(categoryInfo)
-
     function renderCorrespondingItems(){
         console.log(categoryInfo.components)
         if(!categoryInfo.category) return;
@@ -94,6 +92,10 @@ function DisplayItems(props) {
             </div>
         </div>
         {renderCorrespondingItems()}
+
+        <Link replace to = "/list">
+            <button className='go-back'>Return</button>
+        </Link>
     </div>
 
 

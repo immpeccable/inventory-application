@@ -21,6 +21,11 @@ function Category(props) {
                 Choose Item
             </button>
         </Link>
+        
+        <form>
+            <input className='category-delete-button' type="submit" value="Delete" formMethod='POST' formAction= {'http://localhost:3000/list/category/' + category_id + "/delete"} ></input>
+        </form>
+        
     </div>
 
 }

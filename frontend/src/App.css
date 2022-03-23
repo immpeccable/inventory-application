@@ -32,11 +32,29 @@ body{
   height: 5vh;
 }
 .category-name{
-  width: 25vw;
+  width: 22vw;
 }
 .description{
-  width: 25vw;
+  width: 21vw;
 }
+.category-delete-button{
+  width: 7vw;
+  margin-left: 7rem;
+  height: 50px;
+  background-color: rgb(177, 108, 108);
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+.category-delete-button:hover{
+  background-color: rgb(146, 76, 76);
+}
+.category-delete-button:active{
+  background-color: rgb(104, 44, 44);
+}
+
 .choose-button{
   width: 10vw;
   height: 5vh;
@@ -46,6 +64,37 @@ body{
   border: none;
   color: white;
   border-radius: 10px;
+}
+.go-back{
+  border: none;
+  width: 10rem;
+  height: 50px;
+  position: fixed;
+  bottom: 7rem;
+  right: 4rem;
+  font-size: 24px;
+  font-weight: bolder;
+  border-radius: 8px;
+
+}
+.add-category{
+  width: 40vw;
+  height: 10vh;
+  background-color: rgb(46, 44, 44);
+  margin-top: 2rem;
+  color: white;
+  border: none;
+  font-size: 40px;
+  font-weight: 500;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}
+.add-category:hover{
+  background-color: rgb(24, 22, 22);
+}
+.add-category:active{
+  background-color: rgb(226, 215, 215);
+  color: black;
 }
 
 .component-name, .component-description{
@@ -61,6 +110,48 @@ body{
 .choose-button:active{
   background-color: white;
   color:black;
+}
+
+.add-label, .add-input{
+  color: white;
+}
+.add-label{
+  font-size: 20px;
+  font-weight: bold;
+  width: 10vw;
+  
+}
+.add-input{
+  color: black;
+  font-weight: 500;
+  font-size: 24px;
+  width: 15vw;
+}
+.form-item{
+  display: flex;
+}
+
+.add-description{
+
+  height: 10vh;
+}
+
+.submit-button{
+  width: 12vw;
+  height: 50px;
+  margin-top: 3rem;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+form{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 5rem;
+  gap: 50px;
 }
 
 
