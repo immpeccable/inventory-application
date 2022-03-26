@@ -29,8 +29,6 @@ exports.component_delete_post = function(req, res){
             res.redirect("http://localhost:3001/list");
         }
     })
-
-
 } 
 
 exports.component_add =
